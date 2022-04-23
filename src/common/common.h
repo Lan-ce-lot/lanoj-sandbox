@@ -1,5 +1,5 @@
-#ifndef Y_JUDGER_COMMON_H
-#define Y_JUDGER_COMMON_H
+#ifndef LAN_SANDBOX_COMMON_H
+#define LAN_SANDBOX_COMMON_H
 
 #include <stdio.h>
 #include <unistd.h>
@@ -74,4 +74,4 @@ int getAndSetOptions(int argc, char *argv[], struct execConfig *execConfig);
 
 void generateResult(struct execConfig *execConfig, struct judgeResult *judgeResult);
 
-#endif //Y_JUDGER_COMMON_H
+#endif //LAN_SANDBOX_COMMON_H

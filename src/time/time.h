@@ -1,11 +1,11 @@
-#include <sys/time.h>
+#include <ctime>
 
 
-#ifndef Y_JUDGE_TIME_H
-#define Y_JUDGE_TIME_H
+#ifndef LAN_SANDBOX_TIME_H
+#define LAN_SANDBOX_TIME_H
 
 long getTimeMillisecondByTimeval(struct timeval timeval);
 
 int getGapMillsecond(struct timeval startTime, struct timeval endTime);
 
-#endif //Y_JUDGE_TIME_H
+#endif //LAN_SANDBOX_TIME_H

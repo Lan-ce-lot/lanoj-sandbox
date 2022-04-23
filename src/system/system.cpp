@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include <signal.h>
+#include <csignal>
 #include "system.h"
 
 /**

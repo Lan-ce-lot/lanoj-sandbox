@@ -2,6 +2,12 @@
 #include "./src/common/common.h"
 #include "./src/judge/judge.h"
 
+/**
+ * @author lancel
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char *argv[]) {
     struct execConfig execConfig;
     struct judgeResult judgeResult;

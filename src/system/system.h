@@ -1,5 +1,5 @@
-#ifndef Y_JUDGE_SYSTEM_H
-#define Y_JUDGE_SYSTEM_H
+#ifndef LAN_SANDBOX_SYSTEM_H
+#define LAN_SANDBOX_SYSTEM_H
 
 
 int killPid(pid_t pid, int killType);
@@ -7,4 +7,4 @@ int killPid(pid_t pid, int killType);
 int isRoot();
 
 
-#endif //Y_JUDGE_SYSTEM_H
+#endif //LAN_SANDBOX_SYSTEM_H
