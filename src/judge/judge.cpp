@@ -100,7 +100,7 @@ void runJudge(struct execConfig *execConfig, struct judgeResult *judgeResult) {
     struct timeval startTime, endTime;
     gettimeofday(&startTime, NULL);
     if (!isRoot()) {
-        makeLog(WARNING, "非root用户", execConfig->loggerFile);
+//        makeLog(WARNING, "非root用户", execConfig->loggerFile);
         judgeResult->condition = NOT_ROOT_USER;
         return;
     }
@@ -110,7 +110,7 @@ void runJudge(struct execConfig *execConfig, struct judgeResult *judgeResult) {
 
     if (childPid < 0) {
         //如果出现错误，fork返回一个负值
-        makeLog(ERROR, "fork error!", execConfig->loggerFile);
+//        makeLog(ERROR, "fork error!", execConfig->loggerFile);
         judgeResult->condition = FORK_ERROR;
         return;
     }
@@ -121,7 +121,7 @@ void runJudge(struct execConfig *execConfig, struct judgeResult *judgeResult) {
 
     if (childPid > 0) {
         // 父亲进程
-        makeLog(DEBUG, "父进程已创建", execConfig->loggerFile);
+//        makeLog(DEBUG, "父进程已创建", execConfig->loggerFile);
         struct timeoutKillerConfig killerConfig;
         killerConfig.limitTime = execConfig->realTimeLimit;
         killerConfig.pid = childPid;
@@ -140,7 +140,7 @@ void runJudge(struct execConfig *execConfig, struct judgeResult *judgeResult) {
 
         // 销毁监控进程
         pthread_cancel(pthread);
-        makeLog(DEBUG, "监控线程被销毁", execConfig->loggerFile);
+//        makeLog(DEBUG, "监控线程被销毁", execConfig->loggerFile);
         gettimeofday(&endTime, NULL);
 
         // cpu时间 注意和真实时间区分
