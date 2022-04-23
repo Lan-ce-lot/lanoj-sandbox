@@ -11,6 +11,12 @@
  * 在命令行展示程序的用法
  */
 void showUsage() {
+    printf("\n _       ___   _   _  _____  ___   _   _____________  _______   __\n"
+           "| |     / _ \\ | \\ | |/  ___|/ _ \\ | \\ | |  _  \\ ___ \\|  _  \\ \\ / /\n"
+           "| |    / /_\\ \\|  \\| |\\ `--./ /_\\ \\|  \\| | | | | |_/ /| | | |\\ V / \n"
+           "| |    |  _  || . ` | `--. \\  _  || . ` | | | | ___ \\| | | |/   \\ \n"
+           "| |____| | | || |\\  |/\\__/ / | | || |\\  | |/ /| |_/ /\\ \\_/ / /^\\ \\\n"
+           "\\_____/\\_| |_/\\_| \\_/\\____/\\_| |_/\\_| \\_/___/ \\____/  \\___/\\/   \\/\n");
     printf("\n[限制相关]\n");
     printf("\
   -t,     限制实际时间为t毫秒，请注意和cpu时间区分\n\
@@ -157,9 +163,9 @@ int getAndSetOptions(int argc, char *argv[], struct execConfig *execConfig) {
 void generateResult(struct execConfig *execConfig, struct judgeResult *judgeResult) {
     // 此处的stdout将被调用者处理 应该以json字符串形式表示
     printf("{\n"
-           "    \"realTimeCost\": %llu,\n"
-           "    \"cpuTimeCost\": %llu,\n"
-           "    \"memoryCost\": %llu,\n"
+           "    \"realTimeCost\": %lu,\n"
+           "    \"cpuTimeCost\": %lu,\n"
+           "    \"memoryCost\": %lu,\n"
            "    \"condition\": %d,\n"
            "    \"stdinPath\": \"%s\",\n"
            "    \"stdoutPath\": \"%s\",\n"

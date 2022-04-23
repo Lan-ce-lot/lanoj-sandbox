@@ -5,7 +5,9 @@ LINK_LIBRARIES("pthread")
 LINK_LIBRARIES("seccomp")
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lanoj_Sandbox
+add_executable(
+        Lanoj_Sandbox
+        main.cpp
         src/common/common.cpp
         src/common/common.h
         src/time/time.cpp
@@ -18,4 +20,4 @@ add_executable(Lanoj_Sandbox
         src/judge/judge.h
         src/guard/guard.cpp
         src/guard/guard.h
-        main.cpp)
+        )
