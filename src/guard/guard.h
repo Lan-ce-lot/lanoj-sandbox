@@ -4,7 +4,7 @@
 // 请参阅Linux系统调用列表
 // https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html
 #include <seccomp.h>
-
+#include <cstdlib> // exit
 
 void setSeccompGuard();
 

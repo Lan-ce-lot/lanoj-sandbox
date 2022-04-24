@@ -39,9 +39,10 @@ int addSeccompRules(scmp_filter_ctx ctx) {
  */
 void setSeccompGuard() {
     scmp_filter_ctx ctx;
-    ctx = seccomp_init(SCMP_ACT_ALLOW);
-//    if (!ctx) {
-//    }
+    ctx = seccomp_init(SCMP_ACT_KILL);
+    if (!ctx) {
+        exit(3);
+    }
     addSeccompRules(ctx);
     seccomp_load(ctx);
 }
