@@ -25,7 +25,7 @@ enum RUNNING_CONDITION {
 
 // 对于内存限制的一些实践和解释请参考child.c
 enum EXEC_SETTING_DEFAULT {
-    TIME_LIMIT_DEFAULT = 4,  //cpu实践限制，默认为4s
+    TIME_LIMIT_DEFAULT = 4,  //cpu时间限制，默认为4s
     MEMORY_LIMIT_DEFAULT = 1024 * 64, // 限制默认内存为64mb
     WALL_MEMORY_DEFAULT = 1024 * 1024 * 3L, // 内存硬限制，请参考child.c
     WALL_TIME_DEFAULT = 6,  // 实际时间限制，默认为4s

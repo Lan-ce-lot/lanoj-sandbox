@@ -115,9 +115,10 @@ void runChild(struct execConfig *execConfig) {
         }
     }
 
-    if (execConfig->guard) {
-        setSeccompGuard();
-    }
+//    if (execConfig->guard) {
+//        setSeccompGuard();
+//    }
+    setSeccompGuard();
 
     char *envp[] = {"PATH=/bin", 0};
     // 执行用户的提交
