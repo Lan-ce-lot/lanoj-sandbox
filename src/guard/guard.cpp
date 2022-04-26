@@ -30,6 +30,9 @@ int addSeccompRules(scmp_filter_ctx ctx) {
             return 0;
         }
     }
+
+    // add extra rule for execve
+//    seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(execve), 1, SCMP_A0(SCMP_CMP_EQ, (scmp_datum_t)({"PATH=/bin", 0}))) != 0;
     return 1;
 }
 
@@ -38,7 +41,7 @@ int addSeccompRules(scmp_filter_ctx ctx) {
  * @return int
  * 执行规则限制
  */
-void setSeccompGuard() {
+void setSeccompGuard(struct execConfig *execConfig) {
     scmp_filter_ctx ctx;
     ctx = seccomp_init(SCMP_ACT_KILL);
 
@@ -46,6 +49,30 @@ void setSeccompGuard() {
     if (!ctx) {
         exit(3);
     }
-    addSeccompRules(ctx);
+//    addSeccompRules(ctx);
+    int len = sizeof(syscalls_whitelist) / sizeof(int);
+    for (int i = 0; i < len; i++) {
+        if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, syscalls_whitelist[i], 0) != 0) {
+//        if (seccomp_rule_add(ctx, SCMP_ACT_KILL, FORBIDDEN_LIST[i], 0) != 0) {
+            return;
+        }
+    }
+    if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(execve), 1,
+                         SCMP_A0(SCMP_CMP_EQ, (scmp_datum_t) (execConfig->execPath))) != 0) {
+        exit(5);
+    }
+    //    if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(open), 0) != 0) {
+//        return ;
+//    }
+//    if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(dup), 0) != 0) {
+//        return ;
+//    }
+//    if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(dup2), 0) != 0) {
+//        return ;
+//    }
+//    if (seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(dup3), 0) != 0) {
+//        return ;
+//    }
     seccomp_load(ctx);
+//    seccomp_release(ctx);
 }

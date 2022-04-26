@@ -5,7 +5,7 @@
 // https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html
 #include <seccomp.h>
 #include <cstdlib> // exit
-
-void setSeccompGuard();
+#include "../common/common.h"
+void setSeccompGuard(struct execConfig *execConfig);
 
 #endif //LAN_SANDBOX_GUARD_H

@@ -4,6 +4,7 @@
 #include "child.h"
 
 #include "../guard/guard.h"
+#include "../rule/c_cpp.h"
 
 #define CHILD_EXIT exit
 
@@ -114,13 +115,13 @@ void runChild(struct execConfig *execConfig) {
             CHILD_EXIT(RUNTIME_ERROR);
         }
     }
-
+    char *envp[] = {"PATH=/bin", 0};
 //    if (execConfig->guard) {
 //        setSeccompGuard();
 //    }
-    setSeccompGuard();
+//    setSeccompGuard(execConfig);
+    c_cpp_seccomp_rules(execConfig, false);
 
-    char *envp[] = {"PATH=/bin", 0};
     // 执行用户的提交
     execve(execConfig->execPath, NULL, envp);
     CHILD_EXIT(EXIT_SUCCESS);

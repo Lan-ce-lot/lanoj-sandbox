@@ -19,4 +19,6 @@ add_executable(
         src/judge/judge.h
         src/guard/guard.cpp
         src/guard/guard.h
+        src/rule/c_cpp.cpp
+        src/rule/c_cpp.h
         )
