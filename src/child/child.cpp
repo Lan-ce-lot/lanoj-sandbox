@@ -120,7 +120,10 @@ void runChild(struct execConfig *execConfig) {
 //        setSeccompGuard();
 //    }
 //    setSeccompGuard(execConfig);
-    c_cpp_seccomp_rules(execConfig, false);
+    if (execConfig->guard) {
+        c_cpp_seccomp_rules(execConfig, false);
+    }
+
 
     // 执行用户的提交
     execve(execConfig->execPath, NULL, envp);
