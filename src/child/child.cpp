@@ -121,6 +121,7 @@ void runChild(struct execConfig *execConfig) {
 //    }
 //    setSeccompGuard(execConfig);
     if (execConfig->guard) {
+        // 这里没有过滤python和java
         c_cpp_seccomp_rules(execConfig, false);
     }
 
